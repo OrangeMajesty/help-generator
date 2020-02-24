@@ -1,0 +1,9 @@
+# Templates
+*.pdf
+*.docx
+
+# Result files
+/history/*
+
+# Library
+/libreoffice/*
