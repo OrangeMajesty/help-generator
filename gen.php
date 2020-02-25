@@ -11,14 +11,16 @@ shell_exec('/usr/bin/libreoffice6.3 --headless -convert-to pdf --outdir /home/bi
 */
 
 $Str_data = [
-	"Дмитрий мальков",
-	"123",
-	"321",
-	"444",
-	"hhhhh",
-	"jjjjjjjj",
-	"tttttt",
-	"uuuuuuu",
+	"Дмитрий Мальков",
+	"130900",
+	"«Ақпараттық жүйелер»",
+	"3",
+	"301 ИС",
+	"ақысыз",
+	"27",
+	"маусым",
+	"2020",
+
 ];
 
 include_once(__DIR__.'/class-editor.php');

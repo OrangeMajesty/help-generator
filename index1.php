@@ -9,16 +9,26 @@
 <head>
 	<title>Генератор справок</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="/assets/style.css">
 </head>
 <body>
 <div class="container">
 	<div class="logo">
-		logo
+
+		<img src="/assets/white_logo.png" alt="Logo type" width="233" height="219">
 	</div>
-	<span>Введите иин</span>
-	<input type="text" id="iin">
-	<div class="button-list">
-		<a id="a_kz" href="#">about a</a>
+	<div class="form-generator">
+		<h1>
+			Генератор документов
+		</h1>
+		<span>Введите иин</span>
+		<input type="text" id="iin">
+		<div class="button-list">
+			<a id="a_kz" href="#">Получить справку о Чем то</a>
+			<a id="a_kz" href="#">Получить справку о Чем то</a>
+			<a id="a_kz" href="#">Получить справку о Чем то</a>
+			<a id="a_kz" href="#">Получить справку о Чем то</a>
+		</div>
 	</div>
 </div>
 <script
