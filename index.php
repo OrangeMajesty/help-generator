@@ -1,8 +1,45 @@
 <?php
 
-//var_dump(__DIR__.'\libreoffice\program\soffice.exe');
-// var_dump(shell_exec(__DIR__.'\libreoffice\program\soffice.exe --headless -convert-to pdf --outdir '.__DIR__.' '.__DIR__.'/mp.docx'));
-// $ret_app = shell_exec(__DIR__.'\libreoffice\program\soffice.exe --headless -convert-to odt:"writer8" --outdir '.realpath($temp_folder).' '.realpath(__DIR__."/template/".$_REQUEST['type'].".docx"));
+function transliterateen($input){
+$gost = array(
+"a"=>"а","b"=>"б","v"=>"в","g"=>"г","d"=>"д","e"=>"е","yo"=>"ё",
+"j"=>"ж","z"=>"з","i"=>"и","i"=>"й","k"=>"к",
+"l"=>"л","m"=>"м","n"=>"н","o"=>"о","p"=>"п","r"=>"р","s"=>"с","t"=>"т",
+"y"=>"у","f"=>"ф","h"=>"х","c"=>"ц",
+"ch"=>"ч","sh"=>"ш","sh"=>"щ","i"=>"ы","e"=>"е","u"=>"у","ya"=>"я","A"=>"А","B"=>"Б",
+"V"=>"В","G"=>"Г","D"=>"Д", "E"=>"Е","Yo"=>"Ё","J"=>"Ж","Z"=>"З","I"=>"И","I"=>"Й","K"=>"К","L"=>"Л","M"=>"М",
+"N"=>"Н","O"=>"О","P"=>"П",
+"R"=>"Р","S"=>"С","T"=>"Т","Y"=>"Ю","F"=>"Ф","H"=>"Х","C"=>"Ц","Ch"=>"Ч","Sh"=>"Ш",
+"Sh"=>"Щ","I"=>"Ы","E"=>"Е", "U"=>"У","Ya"=>"Я","'"=>"ь","'"=>"Ь","''"=>"ъ","''"=>"Ъ","j"=>"ї","i"=>"и","g"=>"ґ",
+"ye"=>"є","J"=>"Ї","I"=>"І",
+"G"=>"Ґ","YE"=>"Є","_"=>" "
+);
+return strtr($input, $gost);
+}
+
+$pathdir = __DIR__.'/template/';
+$button_list = '<span>Шаблон не обнаружено.</span>';
+
+if(file_exists($pathdir))
+{
+	$dirlist = scandir($pathdir);
+
+	if(count($dirlist) > 2)
+		$button_list = "";
+
+	foreach ($dirlist as $dir)
+	{
+		if($dir != "." && $dir != ".." && strpos($dir, ".docx") !== false)
+		{
+			$dirname = str_replace(".docx", "", $dir);
+			$button_list .= '<a id="'.$dirname.'" href="#">'.transliterateen($dirname).'</a>';
+			// var_dump($dir);
+		}
+	}
+
+	// die(var_dump($button_list));
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,10 +61,7 @@
 		<span>Введите иин</span>
 		<input type="text" id="iin">
 		<div class="button-list">
-			<a id="a_kz" href="#">Получить справку о Чем то</a>
-			<a id="a_kz" href="#">Получить справку о Чем то</a>
-			<a id="a_kz" href="#">Получить справку о Чем то</a>
-			<a id="a_kz" href="#">Получить справку о Чем то</a>
+			<?php echo $button_list; ?>
 		</div>
 	</div>
 </div>
@@ -44,7 +78,11 @@ jQuery("#iin").on("input", function(){
 		console.log(index, el.id);
 		el.href = "/gen.php?type="+el.id+"&iin="+iin;
 	});
-	
+});
+
+jQuery(document).ready(function() {
+	if(window.location.hash == "#invalid-iin")
+		alert("Неверный иин");
 });
 	
 </script>

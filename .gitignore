@@ -1,9 +1,16 @@
 # Templates
 *.pdf
 *.docx
+config.php
 
 # Result files
 /history/*
 
+# Result files
+/template/*
+
 # Library
-/libreoffice/*
+/libreoffice/* 
+
+# Work data
+/assets/white_logo.png
